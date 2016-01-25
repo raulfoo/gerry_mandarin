@@ -143,7 +143,7 @@ vote_analysis = function(nextStepID,homeDir){
 		
 		shapeMergedUTM= spTransform(shapeMerged,CRS(paste("+proj=utm +zone=",UTMZone_number," +",UTMHemi," +ellps=WGS84 +datum=WGS84 +units=m +no_defs",sep="")))
 		
-		geometricScore = perimeter(shapeMerged)/gArea(shapeMergedUTM,byid=T)	
+		geometricScore =gArea(shapeMergedUTM,byid=T)/perimeter(shapeMerged)^2	
 		geometricScoreTrack = cbind(geometricScoreTrack,geometricScore)
 		colnames(geometricScoreTrack) = inputFile[1:i,1]
 		
